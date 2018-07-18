@@ -1,0 +1,73 @@
+﻿/*/MySql Script/*/
+
+create database facturaciondb;
+go
+use facturaciondb;
+go
+Create Table Usuarios
+(
+	IdUsuario int primary key auto_increment,
+	Nombre varchar(30),
+	Clave varchar(8),
+	NombreUsuario varchar(8),
+	Fecha varchar(30),
+	Comentario varchar(100)
+
+
+);
+go
+insert into Usuarios(Nombre,Clave,NombreUsuario,Fecha,Comentario) values('Albert Lopez','123456','root','2018/6/9','Developer');
+go
+go
+Create Table Productoes
+(
+	Idproducto int primary key auto_increment,
+	Descripcion varchar(400),
+	Precio decimal,
+	DepartamentoId int,
+	Cantidad int
+
+);
+go
+create table Departamentoes
+(
+	DepartamentoId int primary key auto_increment,
+	Nombre varchar(50)
+
+);
+go
+create table Clientes 
+(
+	IdCliente int primary key auto_increment,
+	Nombre varchar(30),
+	Direccion varchar(100),
+	Cedula varchar(15),
+	Telefono varchar(15)
+
+);
+go
+create table Facturas
+(
+	FacturaId int primary key auto_increment,
+	Monto decimal,
+	UsuarioId int,
+	ClienteId int,
+	Fecha varchar(30),
+	Descripcion varchar(400),
+	FormaDePago varchar(50),
+	Devuelta decimal,
+	EfectivoRecibido decimal
+);
+go
+create table FacturaDetalles
+(
+	Id int primary key auto_increment,
+	FacturaId int,
+	ProductoId int,
+	Cantidad int,
+	Precio decimal,
+	Descripcion varchar(400)
+)
+go
+insert into Productoes(Descripcion,Precio,DepartamentoId,Cantidad) values('Coca Cola','50','1','100');
+go
